@@ -49,7 +49,7 @@ router.post("/users/me/logout", auth, async (req, res) => {
       return token.token != req.token;
     });
     await req.user.save();
-    res.send();
+    res.send("<p>Đã đăng xuất khỏi thiết bị này.</p>");
   } catch (error) {
     res.status(500).send(error);
   }
@@ -60,7 +60,7 @@ router.post("/users/me/logoutall", auth, async (req, res) => {
   try {
     req.user.tokens.splice(0, req.user.tokens.length);
     await req.user.save();
-    res.send();
+    res.send("<p>Đã đăng xuất khỏi tất cả thiết bị.</p>");
   } catch (error) {
     res.status(500).send(error);
   }
